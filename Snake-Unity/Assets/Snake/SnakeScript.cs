@@ -15,6 +15,10 @@ public class Snake : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     private Vector2Int input;
     private float nextUpdate;
+    //this is used for the game over screen
+    public GameManagerScript gameManager;
+    //tells when to display game over screen
+    public bool died = false;
 
     private void Start()
     {
@@ -154,7 +158,12 @@ public class Snake : MonoBehaviour
             }
             else
             {
-                EndGame();
+                if(died != true){
+                    gameManager.gameOver();
+                    died = true;
+                    speed = 0;
+                    Debug.Log("Working?");
+                }
             }
         }
     }
