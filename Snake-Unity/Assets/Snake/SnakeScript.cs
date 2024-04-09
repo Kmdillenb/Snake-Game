@@ -99,6 +99,7 @@ public class Snake : MonoBehaviour
 
     public void Grow()
     {
+        FindObjectOfType<AudioManager>().Play("Eat");
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
@@ -162,7 +163,6 @@ public class Snake : MonoBehaviour
                     gameManager.gameOver();
                     died = true;
                     speed = 0;
-                    Debug.Log("Working?");
                 }
             }
         }

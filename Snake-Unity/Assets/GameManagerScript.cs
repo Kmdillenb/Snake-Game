@@ -9,20 +9,26 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameOverUI.activeInHierarchy){
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void gameOver(){
+        FindObjectOfType<AudioManager>().Play("Ded");
         gameOverUI.SetActive(true);
     }
 
     public void restart(){
+        FindObjectOfType<AudioManager>().Play("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
