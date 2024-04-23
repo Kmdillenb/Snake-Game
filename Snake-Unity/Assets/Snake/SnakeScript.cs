@@ -15,6 +15,10 @@ public class Snake : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     private Vector2Int input;
     private float nextUpdate;
+    //this is used for the game over screen
+    public GameManagerScript gameManager;
+    //tells when to display game over screen
+    public bool died = false;
 
     private void Start()
     {
@@ -95,6 +99,7 @@ public class Snake : MonoBehaviour
 
     public void Grow()
     {
+        FindObjectOfType<AudioManager>().Play("Eat");
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
@@ -154,7 +159,11 @@ public class Snake : MonoBehaviour
             }
             else
             {
-                EndGame();
+                if(died != true){
+                    gameManager.gameOver();
+                    died = true;
+                    speed = 0;
+                }
             }
         }
     }

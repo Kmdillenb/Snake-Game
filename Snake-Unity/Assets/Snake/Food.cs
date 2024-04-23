@@ -42,7 +42,7 @@ public class Food : MonoBehaviour
                 }
             }
         }
-
+        FindObjectOfType<AudioManager>().Play("Eat");
         transform.position = new Vector2(x, y);
     }
 
