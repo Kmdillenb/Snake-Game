@@ -12,7 +12,9 @@ public class Snake : MonoBehaviour
     public int initialSize = 4;
     public bool moveThroughWalls = false;
 
-    private List<Transform> segments = new List<Transform>();
+    public List<Transform> segments = new List<Transform>();
+
+    public int Length;
     private Vector2Int input;
     private float nextUpdate;
     //this is used for the game over screen
@@ -27,6 +29,7 @@ public class Snake : MonoBehaviour
 
     private void Update()
     {
+        Length = segments.Count;
         // Only allow turning up or down while moving in the x-axis
         if (direction.x != 0f)
         {
