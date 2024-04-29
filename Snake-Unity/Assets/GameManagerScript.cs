@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public Moving boss1;
     public GameObject gameOverUI;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void restart(){
+        boss1.GetComponent<Moving>().health = 3;
         FindObjectOfType<AudioManager>().Play("Restart");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

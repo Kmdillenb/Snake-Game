@@ -15,6 +15,10 @@ public class Snake : MonoBehaviour
     public List<Transform> segments = new List<Transform>();
 
     public int Length;
+
+    public int score;
+
+    public GameObject boss;
     private Vector2Int input;
     private float nextUpdate;
     //this is used for the game over screen
@@ -25,6 +29,7 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         ResetState();
+        Instantiate(boss, new Vector3(1,17,0), Quaternion.identity);
     }
 
     private void Update()
@@ -66,6 +71,10 @@ public class Snake : MonoBehaviour
                 Destroy(tail.gameObject);
             }
         }
+        // if(boss.GetComponent<Moving>().health <= 0){
+        //     Destroy(boss);
+        // }
+
     }
 
     private void FixedUpdate()
@@ -102,6 +111,7 @@ public class Snake : MonoBehaviour
 
     public void Grow()
     {
+        score += 1;
         FindObjectOfType<AudioManager>().Play("Eat");
         Transform segment = Instantiate(segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
@@ -120,6 +130,7 @@ public class Snake : MonoBehaviour
         }
 
         // Clear the list but add back this as the head
+        score = 0;
         segments.Clear();
         segments.Add(transform);
 

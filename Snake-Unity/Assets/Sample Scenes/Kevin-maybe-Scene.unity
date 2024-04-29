@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 108319230}
   - component: {fileID: 108319229}
   - component: {fileID: 108319231}
+  - component: {fileID: 108319232}
   m_Layer: 0
   m_Name: TopWall
   m_TagString: Wall
@@ -387,6 +388,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &108319232
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108319227}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &154106645
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +940,10 @@ MonoBehaviour:
   speedMultiplier: 1
   initialSize: 4
   moveThroughWalls: 0
-  shot: {fileID: 0}
+  segments: []
+  Length: 0
+  score: 0
+  boss: {fileID: 3618639625782899156, guid: 524974a0d32904e4392291eac7a02352, type: 3}
   gameManager: {fileID: 1970759568}
   died: 0
 --- !u!114 &499524668
@@ -940,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 499524664}
-  bulletPrefab: {fileID: 4848363643405092054, guid: 55d017860b4a9ad4c8ad0eb6fe0a40a7, type: 3}
+  bulletPrefab: {fileID: 8853173827470189203, guid: 30a4d0e7d60fbc148a6d8296f316c012, type: 3}
   snake: {fileID: 499524662}
   firedfrom: {x: 0, y: -1}
   snakeGame: {fileID: 499524667}
@@ -1049,7 +1080,8 @@ GameObject:
   - component: {fileID: 522706568}
   - component: {fileID: 522706567}
   - component: {fileID: 522706566}
-  m_Layer: 4
+  - component: {fileID: 522706570}
+  m_Layer: 6
   m_Name: Food (2)
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -1181,6 +1213,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &522706570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522706565}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &603658396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,6 +1384,7 @@ GameObject:
   - component: {fileID: 960349214}
   - component: {fileID: 960349213}
   - component: {fileID: 960349215}
+  - component: {fileID: 960349216}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Wall
@@ -1444,6 +1504,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &960349216
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960349211}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &997323356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1811,8 @@ GameObject:
   - component: {fileID: 1280076396}
   - component: {fileID: 1280076395}
   - component: {fileID: 1280076398}
-  m_Layer: 4
+  - component: {fileID: 1280076399}
+  m_Layer: 6
   m_Name: Food
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -1856,6 +1944,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridArea: {fileID: 1405996022}
+--- !u!50 &1280076399
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280076394}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1405996021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +2059,7 @@ GameObject:
   - component: {fileID: 1422190696}
   - component: {fileID: 1422190695}
   - component: {fileID: 1422190697}
+  - component: {fileID: 1422190698}
   m_Layer: 0
   m_Name: BottomWall
   m_TagString: Wall
@@ -2063,6 +2179,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1422190698
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422190693}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1559010040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2478,8 @@ GameObject:
   - component: {fileID: 1594181416}
   - component: {fileID: 1594181415}
   - component: {fileID: 1594181414}
-  m_Layer: 4
+  - component: {fileID: 1594181418}
+  m_Layer: 6
   m_Name: Food (1)
   m_TagString: Food
   m_Icon: {fileID: 0}
@@ -2467,6 +2611,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &1594181418
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594181413}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1757111969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,6 +2986,7 @@ GameObject:
   - component: {fileID: 1897228642}
   - component: {fileID: 1897228641}
   - component: {fileID: 1897228643}
+  - component: {fileID: 1897228644}
   m_Layer: 0
   m_Name: RightWall
   m_TagString: Wall
@@ -2934,6 +3106,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1897228644
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897228639}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1970759567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,6 +3162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9739af7b1c3dac7459f77c62188847ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss1: {fileID: 2976640008287656931, guid: 524974a0d32904e4392291eac7a02352, type: 3}
   gameOverUI: {fileID: 1836996723}
 --- !u!4 &1970759569
 Transform:

@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Food
   - Obstacle
+  - Bullet
+  - boss
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - food
+  - Boss
   - 
   - 
   - 
