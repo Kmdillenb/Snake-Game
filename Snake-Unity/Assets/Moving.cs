@@ -42,27 +42,32 @@ public class Moving : MonoBehaviour
         }
         else if(collider.gameObject.CompareTag("Bullet")){
             health -= 1;
+            FindObjectOfType<AudioManager>().Play("hit");
+            Destroy(collider.gameObject);
             if(health <= 0){
-                Destroy(collider);
                 Destroy(gameObject);
+                FindObjectOfType<AudioManager>().Play("defeat");
             }
         }
         if(collider.name == "BottomWall"){
+            FindObjectOfType<AudioManager>().Play("hit_wall");
             y_Direction = 1;
         }
         else if(collider.name == "RightWall"){
+            FindObjectOfType<AudioManager>().Play("hit_wall2");
             x_Direction = -1;
         }
         else if(collider.name == "TopWall"){
-            
+            FindObjectOfType<AudioManager>().Play("hit_wall");
             y_Direction = -1;
         }
         else if(collider.name == "LeftWall"){
+            FindObjectOfType<AudioManager>().Play("hit_wall2");
             x_Direction = 1;
         }
         else if(collider.name == "Boss1(Clone)"){
+            FindObjectOfType<AudioManager>().Play("hit_wall");
             x_Direction *= -1;
-            y_Direction *= -1;
         }
     }
 
