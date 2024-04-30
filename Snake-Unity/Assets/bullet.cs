@@ -9,8 +9,8 @@ public class bullet : MonoBehaviour
     public GameObject hitEffect;
     public GameObject Boss;
 
-    void OnCollisionEnter2D(Collision2D collision){
+    private void OnTriggerEnter2D(Collider2D collider){
         // GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        Destroy(collider);
         }
 }
