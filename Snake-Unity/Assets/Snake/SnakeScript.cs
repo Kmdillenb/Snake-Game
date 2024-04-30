@@ -170,7 +170,7 @@ public class Snake : MonoBehaviour
         {
             ResetState();
         }
-        else if (other.gameObject.CompareTag("Wall"))
+        else if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Player"))
         {
             if (moveThroughWalls)
             {

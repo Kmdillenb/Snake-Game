@@ -13,28 +13,27 @@ public class PointsTracker : MonoBehaviour
     public Snake SnakeGame;
 
     int score = 0;
-    int highscore = 0;
+    static int highscore = 0;
 
     private void Awake(){
         instance = this;
     }
 
     private void Start(){
-        highscore = PlayerPrefs.GetInt("highscore", 0);
+        score = 0;
         scoreText.text = score.ToString() + " POINTS";
         highscoreText.text = "HIGHSCORE: " + highscore.ToString();
     }
     private void Update()
     {
         score = SnakeGame.GetComponent<Snake>().score;
+        UpdateScore();
     }
-//     }
-// public void UpdateScore(){}
-//     public void AddPoint(){
-//         score++;
-//         scoreText.text = score.ToString() + " POINTS";
-//         if(highscore < score){
-//             PlayerPrefs.SetInt("highscore", score);
-//         }
-//     }
+     void UpdateScore(){
+        scoreText.text = score.ToString() + " POINTS";
+        if(highscore < score){
+            highscore = score;
+            highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+        }
+     }
 }
