@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1862502517672885244}
   - component: {fileID: 2390703187824534267}
   - component: {fileID: 6857596080871154959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SnakeSegment
-  m_TagString: Obstacle
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

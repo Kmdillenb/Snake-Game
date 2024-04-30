@@ -29,12 +29,16 @@ public class Snake : MonoBehaviour
     private void Start()
     {
         ResetState();
-        Instantiate(boss, new Vector3(1,17,0), Quaternion.identity);
     }
 
     private void Update()
     {
         Length = segments.Count;
+
+        if(score % 7 == 0 && score != 0){
+            Instantiate(boss, new Vector3(1,17,0), Quaternion.identity);
+            score += 1;
+        }
         // Only allow turning up or down while moving in the x-axis
         if (direction.x != 0f)
         {
@@ -130,7 +134,7 @@ public class Snake : MonoBehaviour
         }
 
         // Clear the list but add back this as the head
-        score = 0;
+        
         segments.Clear();
         segments.Add(transform);
 
@@ -139,6 +143,7 @@ public class Snake : MonoBehaviour
         {
             Grow();
         }
+        score = 0;
     }
 
     public bool Occupies(int x, int y)
