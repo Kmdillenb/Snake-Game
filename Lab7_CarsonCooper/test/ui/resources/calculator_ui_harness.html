@@ -48,7 +48,7 @@
     function clearActive(){['opAdd','opSub','opMul','opDiv'].forEach(id=>document.getElementById(id).classList.remove('active'));}
     function activate(symbol){clearActive(); if(symbol==='+')document.getElementById('opAdd').classList.add('active'); if(symbol==='-')document.getElementById('opSub').classList.add('active'); if(symbol==='*')document.getElementById('opMul').classList.add('active'); if(symbol==='/')document.getElementById('opDiv').classList.add('active');}
     function val(){ return Number(display); }
-    function fmt(n){ return Number.isInteger(n) ? String(n) : String(n); }
+    function fmt(n){ return String(n); }
     function err(msg){ display=msg; acc=null; op=null; waiting=false; executed=false; clearActive(); render(); }
     function digit(d){ if(waiting){ display=d; waiting=false; clearActive(); } else if(display==='0'||display.startsWith('Error')){ display=d; } else { display+=d; } executed=false; render(); }
     function dec(){ if(waiting){ display='0.'; waiting=false; clearActive(); } else if(!display.includes('.')){ display+='.'; } executed=false; render(); }
