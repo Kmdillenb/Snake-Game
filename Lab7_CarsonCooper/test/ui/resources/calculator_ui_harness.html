@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Calculator UI Harness</title>
+    <style>
+        .op { background: #f0f0f0; }
+        .op.active { background: #ffc96b; }
+    </style>
+</head>
+<body>
+<input id="display" value="0" readonly />
+<button id="mclear" onclick="memClear()">MC</button>
+<button id="mrecall" onclick="memRecall()">MR</button>
+<button id="madd" onclick="memAdd()">M+</button>
+<button id="msub" onclick="memSub()">M-</button>
+<button id="delete" onclick="del()">Del</button>
+<button id="clear" onclick="clearAll()">C</button>
+<button id="square" onclick="square()">x²</button>
+<button id="sqrt" onclick="sqrtOp()">√</button>
+
+<button id="d7" onclick="digit('7')">7</button>
+<button id="d8" onclick="digit('8')">8</button>
+<button id="d9" onclick="digit('9')">9</button>
+<button class="op" id="opDiv" onclick="setOp('/')">/</button>
+<button id="d4" onclick="digit('4')">4</button>
+<button id="d5" onclick="digit('5')">5</button>
+<button id="d6" onclick="digit('6')">6</button>
+<button class="op" id="opMul" onclick="setOp('*')">*</button>
+<button id="d1" onclick="digit('1')">1</button>
+<button id="d2" onclick="digit('2')">2</button>
+<button id="d3" onclick="digit('3')">3</button>
+<button class="op" id="opSub" onclick="setOp('-')">-</button>
+<button id="d0" onclick="digit('0')">0</button>
+<button id="decimal" onclick="dec()">.</button>
+<button id="equals" onclick="eq()">=</button>
+<button class="op" id="opAdd" onclick="setOp('+')">+</button>
+
+<script>
+    let display = '0';
+    let acc = null;
+    let op = null;
+    let waiting = false;
+    let memory = 0;
+    let executed = false;
+
+    function render(){ document.getElementById('display').value = display; }
+    function clearActive(){['opAdd','opSub','opMul','opDiv'].forEach(id=>document.getElementById(id).classList.remove('active'));}
+    function activate(symbol){clearActive(); if(symbol==='+')document.getElementById('opAdd').classList.add('active'); if(symbol==='-')document.getElementById('opSub').classList.add('active'); if(symbol==='*')document.getElementById('opMul').classList.add('active'); if(symbol==='/')document.getElementById('opDiv').classList.add('active');}
+    function val(){ return Number(display); }
+    function fmt(n){ return Number.isInteger(n) ? String(n) : String(n); }
+    function err(msg){ display=msg; acc=null; op=null; waiting=false; executed=false; clearActive(); render(); }
+    function digit(d){ if(waiting){ display=d; waiting=false; clearActive(); } else if(display==='0'||display.startsWith('Error')){ display=d; } else { display+=d; } executed=false; render(); }
+    function dec(){ if(waiting){ display='0.'; waiting=false; clearActive(); } else if(!display.includes('.')){ display+='.'; } executed=false; render(); }
+    function setOp(next){ if(display.startsWith('Error')) return; if(acc===null){ acc=val(); } else if(!waiting && op){ eq(); acc=val(); }
+      op=next; waiting=true; activate(next); }
+    function eq(){ if(!op) return; const rhs=waiting?acc:val(); if(op==='/' && rhs===0){ return err('Error: division by zero'); }
+      const res= op==='+'?acc+rhs: op==='-'?acc-rhs: op==='*'?acc*rhs: acc/rhs;
+      if(!Number.isFinite(res)){ return err('Error: out of range'); }
+      display=fmt(res); acc=res; op=null; waiting=false; executed=true; clearActive(); render(); }
+    function square(){ const res=val()*val(); if(!Number.isFinite(res)){return err('Error: out of range');} display=fmt(res); acc=res; op=null; waiting=false; executed=true; clearActive(); render(); }
+    function sqrtOp(){ const v=val(); if(v<0){ return err('Error: sqrt of negative value'); } const res=Math.sqrt(v); display=fmt(res); acc=res; op=null; waiting=false; executed=true; clearActive(); render(); }
+    function memAdd(){ if(!executed) return err('Error: memory accepts executed results only'); memory+=val(); }
+    function memSub(){ if(!executed) return err('Error: memory accepts executed results only'); memory-=val(); }
+    function memRecall(){ display=fmt(memory); executed=true; clearActive(); render(); }
+    function memClear(){ memory=0; }
+    function del(){ if(waiting||executed) return; display = display.length<=1?'0':display.substring(0,display.length-1); render(); }
+    function clearAll(){ display='0'; acc=null; op=null; waiting=false; memory=0; executed=false; clearActive(); render(); }
+    render();
+</script>
+</body>
+</html>
